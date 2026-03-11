@@ -1,6 +1,7 @@
 package seedu.classmate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
 class ModuleTest {
@@ -16,5 +17,17 @@ class ModuleTest {
          * Size of the ArrayList will increment without detecting duplicate entry
          */
         assertEquals(1, module.getPrerequisites().size(), "Prerequisite module should not be duplicated.");
+    }
+
+    @Test
+    void module_nullName_throwsException() {
+        /*
+         * Throw custom exception for null string input
+         */
+        ClassMateException e = assertThrows(ClassMateException.class, () -> {
+            new Module("", "");
+        });
+
+        assertEquals("Module details cannot be empty.", e.getMessage());
     }
 }
