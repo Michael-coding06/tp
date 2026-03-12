@@ -50,13 +50,15 @@ public class ClassMate {
                     break;
 
                 case "specialisations":
-                    System.out.println("Listing all specificiations:");
+                    System.out.println("Listing all specifications:");
                     break;
 
                 case "specialisation":
                     String specialisationName = command.getArgs();
                     System.out.println("Listing details for " + specialisationName);
                     Specialisation spec = new Specialisation(specialisationName);
+                    break;
+
                 default:
                     throw new ClassMateException("Unknown command.");
                 }
