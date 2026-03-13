@@ -95,12 +95,11 @@ public class Module {
         ArrayList<Module> parents = major.findModulesWithPrereq(moduleCode);
 
         if (!parents.isEmpty()) {
-            String parentModules = "";
-            for (Module module: parents) {
-                parentModules += module.getModuleCode() + "  ";
+            StringBuilder parentModules = new StringBuilder();
+            for (Module module : parents) {
+                parentModules.append(module.getModuleCode()).append("  ");
             }
-
-            System.out.println(parentModules);
+            sb.append(parentModules).append("\n");
             printPrereqTreeHelper(major, "", true, false, sb);
         } else {
             printPrereqTreeHelper(major, "", true, true, sb);
@@ -129,9 +128,9 @@ public class Module {
                 prereqModule.printPrereqTreeHelper(major, newPrefix, lastChild, false, sb);
             } else {
                 sb.append(newPrefix)
-                .append(lastChild ? "└── " : "├── ")
-                .append(prereqCode)
-                .append("\n");
+                    .append(lastChild ? "└── " : "├── ")
+                    .append(prereqCode)
+                    .append("\n");
             }
         }
     }
